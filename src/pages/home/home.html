@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Usuarios
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  padding>
+  <ion-img justify-content-center width="100" height="80" src="https://thumbs.gfycat.com/MatureGiganticAlbertosaurus-small.gif"></ion-img>
+  <ion-list>
+    <div *ngFor="let user of users" >
+    <button ion-item (click)="openUser(user.id)">
+      <ion-avatar item-start>
+        <ion-icon name="contacts"></ion-icon>
+        <!-- <img [src]="https://ece.nl/wp-content/uploads/person-dummy.jpg"> -->
+      </ion-avatar>
+      <h2>{{ user.name | uppercase }}</h2>
+      <!-- <p>{{ user.email }}</p> -->
+    </button>
+  </div>
+  </ion-list>
+</ion-content>
