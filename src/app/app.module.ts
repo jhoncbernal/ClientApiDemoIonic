@@ -1,3 +1,4 @@
+import { SignUpPage } from './../pages/sign-up/sign-up';
 import { PostsPage } from './../pages/posts/posts';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -14,7 +15,8 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
   declarations: [
     MyApp,
     HomePage,
-    PostsPage
+    PostsPage,
+    SignUpPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
   entryComponents: [
     MyApp,
     HomePage,
-    PostsPage
+    PostsPage,
+    SignUpPage
   ],
   providers: [
     StatusBar,

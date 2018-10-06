@@ -17,13 +17,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class PostsPage {
   posts: any;
   prePost :any
-  post : string;
-  constructor(public navCtrl: NavController,private userService: UserServiceProvider, public navParams: NavParams) {
-    this.post = navParams.get('id');
+  token : string;
+  constructor(public navCtrl: NavController,private http: UserServiceProvider, public navParams: NavParams) {
+    this.token = navParams.get('token');
+
   }
 
   ionViewDidLoad(){
-    this.userService.getPosts()
+    this.http.index('posts',this.token)
     .subscribe(
       (data) => { // Success
         this.posts = data;
@@ -36,7 +37,7 @@ export class PostsPage {
 
   openPost(name){
     console.log("el id es"+name)
-    this.userService.getPost(name)
+    this.http.getPost(name)
     .subscribe(
       (data) => { // Success
         //this.users = data;

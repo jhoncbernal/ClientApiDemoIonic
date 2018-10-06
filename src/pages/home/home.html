@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar color="primary">
+   <button ion-button (click)="openPageSignUp()">
+     <ion-icon name="menu"></ion-icon>
+   </button>
     <ion-title>
       Usuarios
     </ion-title>
@@ -10,7 +13,7 @@
   <ion-img justify-content-center width="100" height="80" src="https://thumbs.gfycat.com/MatureGiganticAlbertosaurus-small.gif"></ion-img>
   <ion-list>
     <div *ngFor="let user of users" >
-    <button ion-item (click)="openUser(user.id)">
+    <button ion-item (click)="openUser(user.token)">
       <ion-avatar item-start>
         <ion-icon name="contacts"></ion-icon>
         <!-- <img [src]="https://ece.nl/wp-content/uploads/person-dummy.jpg"> -->
