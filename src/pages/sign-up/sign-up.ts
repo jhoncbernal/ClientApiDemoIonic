@@ -16,6 +16,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class SignUpPage {
 nameUser :string ;
+idUser :string ;
 titlePost :string;
 bodyPost :string;
 token :any;
@@ -32,18 +33,32 @@ token :any;
   }
 
   CrearPost(){
-    this.token="4e2efe5f039c041c25e3f333c59dde69";
     let body :any ={"post": {"title": this.titlePost,"body": this.bodyPost}};
-    this.http.create('posts',body,this.token)
+    this.http.show('users',this.idUser)
     .subscribe(
       (data) => { // Success
         this.token = data;
-        console.log(this.token.token);
+        this.http.create('posts',body,this.token.token)
+        .subscribe(
+          (data) => { // Success
+            this.token = data;
+            this.titlePost="";
+            this.bodyPost="";
+            this.idUser="";
+            this.presentAlert("ok","la publicación se creo correctamente");
+          },
+          (error) =>{
+            console.error(error);
+            this.presentAlert("Error",error);
+          }
+        )
       },
       (error) =>{
         console.error(error);
+        this.presentAlert("Error",error);
       }
-    )
+    )    
+   
   }
    CrearUser(){
     let body :any ={"user": {"name": this.nameUser}};
@@ -51,16 +66,18 @@ token :any;
     .subscribe(
       (data) => { // Success
         this.token = data;
-        console.log(this.token.token);
+        this.nameUser="";
+        this.presentAlert("OK","El usuario "+this.nameUser+" se creo correctamente");
       },
       (error) =>{
         console.error(error);
+        this.presentAlert("Error",error);
       }
     )
   }
-  presentAlert(data) {
+  presentAlert(title,data) {
     let alert = this.alertCtrl.create({
-      title: 'Token',
+      title: title,
       subTitle: data,
       buttons: ['Ok']
     });

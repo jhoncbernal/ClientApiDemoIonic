@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-const API_ENDPOINT= 'http://localhost:3000/';//API DEVELOPMENT
-//const API_ENDPOINT= 'https://secure-cove-21467.herokuapp.com/';//API PRODUCTION
+//const API_ENDPOINT= 'http://localhost:3000/';//API DEVELOPMENT
+const API_ENDPOINT= 'https://secure-cove-21467.herokuapp.com/';//API PRODUCTION
 const URL_REQ= 'api/v1/';
 const API_HEADER= " 'Content-Type': 'application/json','Accept': 'application/json' ";
 
@@ -16,7 +16,6 @@ const API_HEADER= " 'Content-Type': 'application/json','Accept': 'application/js
 export class UserServiceProvider {
   headers : any=  { 'Content-Type': 'application/json','Accept': 'application/json' };
   constructor(public http: HttpClient) {
-   // console.log('Hello UserServiceProvider Provider');
   }
   index(controller:string,token=""){
     this.authorization(token);
@@ -26,35 +25,35 @@ export class UserServiceProvider {
   }
   show(controller:string,id,token=""){
     this.authorization(token);
-    return this.http.get(API_ENDPOINT+URL_REQ+controller+'/'+id);
+    return this.http.get(API_ENDPOINT+URL_REQ+controller+'/'+id, {
+      headers: this.headers
+    });
   }
   create(controller:string,body,token=""){
    this.authorization(token);
-    console.log(this.headers);
     return this.http.post(API_ENDPOINT+URL_REQ+controller, 
             body, 
             {
               headers: this.headers
             });
   }
-  delte(controller:string,id,token){
+  delete(controller:string,id,token){
     this.authorization(token);
     return this.http.delete(API_ENDPOINT+URL_REQ+controller+'/'+id, 
-{
-  headers: {API_HEADER,token}
-});
+    {
+      headers: this.headers
+    });
   }
 
-  update(controller:string,body,token){
+  update(controller:string,id,body,token){
     this.authorization(token);
-    return this.http.patch(
-      API_ENDPOINT+URL_REQ+controller, 
-                                body,
-                                {headers: {API_HEADER,token}}
-      );
+    return this.http.patch(API_ENDPOINT+URL_REQ+controller+'/'+id, 
+      body, 
+      {
+        headers: this.headers
+      });
   }
   authorization(token:string){
-    console.log(token);
     if (token!=""){ this.headers.Authorization='Bearer '+token};
   }
   getUsers() {

@@ -15,23 +15,29 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label floating>Nombre</ion-label>
-    <ion-input [(ngModel)]="nameUser" type="text"></ion-input>
+      <ion-label floating>ID</ion-label>
+      <ion-input [(ngModel)]="idUser" type="text" ></ion-input>
   </ion-item>
   <ion-item>
       <ion-label   floating>Titulo Publicacion</ion-label>
-      <ion-input [(ngModel)]="titlePost" type="text"></ion-input>
+      <ion-input [(ngModel)]="titlePost" type="text" ></ion-input>
     </ion-item>
     <ion-item>
         <ion-label floating>Cuerpo de la pubicacion</ion-label>
-        <ion-input  [(ngModel)]="bodyPost"  type="text"></ion-input>
+        <ion-input  [(ngModel)]="bodyPost"  type="text" ></ion-input>
       </ion-item>
       <div class=btn-form>
-        <button ion-button color="primary" (click)="CrearUser()">
-          Crear Usuario
-        </button>
-        <button color="secondary" ion-button  (click)="CrearPost()">
+        <button color="secondary" type="submit" [disabled]="!(titlePost&&bodyPost&&idUser)" ion-button  (click)="CrearPost()">
           Crear Post
         </button>
       </div>
+      <ion-item>
+          <ion-label floating>Nombre</ion-label>
+          <ion-input [(ngModel)]="nameUser" type="text" ></ion-input>
+  </ion-item>
+  <div class=btn-form>
+      <button ion-button type="submit" [disabled]="!nameUser" color="primary" (click)="CrearUser()">
+        Crear Usuario
+      </button>
+  </div>
 </ion-content>

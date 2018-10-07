@@ -1,3 +1,4 @@
+import { PostPage } from './../pages/post/post';
 import { SignUpPage } from './../pages/sign-up/sign-up';
 import { PostsPage } from './../pages/posts/posts';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,7 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
     MyApp,
     HomePage,
     PostsPage,
+    PostPage,
     SignUpPage
   ],
   imports: [
@@ -28,6 +30,7 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
     MyApp,
     HomePage,
     PostsPage,
+    PostPage,
     SignUpPage
   ],
   providers: [

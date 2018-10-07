@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Posts</ion-title>
+    <ion-title >{{ title }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,16 +16,16 @@
 <ion-content padding>
     <ion-list>
         <div *ngFor="let post of posts" >
-        <button ion-item (click)="openPost(post.user.id)">
+        <button ion-item (click)="openPost(post.user.token,post.id)">
           <ion-avatar item-start>
             <ion-icon name="contacts"></ion-icon>
             <!-- <img [src]="https://ece.nl/wp-content/uploads/person-dummy.jpg"> -->
           </ion-avatar>
-          <h1>{{ post.user.name }}</h1>
-          <h2>{{ post.title | uppercase }}</h2>
-          <h3>{{ post.body}}</h3>
-          <p>{{ post.id }}</p>
-          
+          <h1>Nombre: {{ post.user.name }}</h1>
+          <p>{{ post.user.id }}</p>
+          <h1>Publicacion {{ post.id }}</h1>
+          <h2>Titulo: {{ post.title | uppercase }}</h2>
+          <h3>Cuerpo:{{ post.body}}</h3>
           <!-- <p>{{ user.email }}</p> -->
         </button>
       </div>

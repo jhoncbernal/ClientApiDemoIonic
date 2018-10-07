@@ -1,17 +1,22 @@
 <ion-header>
   <ion-navbar color="primary">
-   <button ion-button (click)="openPageSignUp()">
-     <ion-icon name="menu"></ion-icon>
-   </button>
-    <ion-title>
-      Usuarios
-    </ion-title>
+ 
+    
+        <ion-buttons>
+          <button ion-button icon-only (click)="openPageSignUp()">
+              <ion-icon name="document"></ion-icon> 
+              <ion-icon name="person-add"></ion-icon>
+                           
+               
+          </button>
+        </ion-buttons>
+    
   </ion-navbar>
 </ion-header>
 
 <ion-content  padding>
-  <ion-img justify-content-center width="100" height="80" src="https://thumbs.gfycat.com/MatureGiganticAlbertosaurus-small.gif"></ion-img>
-  <ion-list>
+  <div class="title"><ion-title>Users</ion-title></div>  
+ <ion-list>
     <div *ngFor="let user of users" >
     <button ion-item (click)="openUser(user.token)">
       <ion-avatar item-start>
